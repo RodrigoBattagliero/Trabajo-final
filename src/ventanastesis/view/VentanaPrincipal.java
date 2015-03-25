@@ -102,6 +102,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mItemListarHistorialDeSolicitudesProcesadas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,6 +157,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMenuItem5);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu1.setText("Pruba");
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -229,6 +233,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
