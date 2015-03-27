@@ -1,8 +1,8 @@
 package ventanastesis;
 
-import ventanastesis.view.PanelSolicitudesACompletarOGAGTD;
-import ventanastesis.view.VentanaPrincipal;
-import ventanastesis.view.controller.SolicitudesACompletarController;
+import controller.LoginController;
+import model.LoginDAO;
+import view.FrameLogin;
 
 /**
  *
@@ -14,10 +14,11 @@ public class VentanasTesis {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        VentanaPrincipal Ventana = new VentanaPrincipal();
-        Ventana.setVisible(true);
-        PanelSolicitudesACompletarOGAGTD vista = new PanelSolicitudesACompletarOGAGTD();
-        SolicitudesACompletarController controlador = new SolicitudesACompletarController(vista);
+        FrameLogin LoginView = new FrameLogin();
+        LoginDAO Login = new LoginDAO();
+        LoginController LoginController = new LoginController(LoginView, Login);
+        LoginController.init();
+        
     }
     
 }

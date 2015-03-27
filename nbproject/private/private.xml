@@ -3,18 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/ventanastesis/view/PanelConfirmarLoteDeSolicitudesProcesadas.java</file>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/ventanastesis/view/PanelCompletarDatosDeTrasalado.java</file>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/ventanastesis/view/controller/SolicitudesACompletarController.java</file>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/ventanastesis/view/PanelIniciarSolicitud.java</file>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/ventanastesis/view/VentanaPrincipal.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/model/LoginDTO.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/model/SolicitudDAO.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/view/VentanaOgagtd.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/controller/LoginController.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/model/LoginDAO.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/view/PanelAdministrarRegistroUnico.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/controller/CompletarDatosDocentesController.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/controller/OgagtdController.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/view/PanelCompletarDatosDeAlojamientoOComida.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/view/PanelCompletarDatosDeTrasalado.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/view/FrameLogin.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/controller/IniciarSolicitudController.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/model/CompletarDatosDocentesDAO.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/view/PanelCompletarDatosDeDocentes.java</file>
             <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/ventanastesis/VentanasTesis.java</file>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/ventanastesis/view/PanelListarSolicitudesProcesadas.java</file>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/ventanastesis/view/PanelCrearRegistroUnico.java</file>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/ventanastesis/view/PanelCompletarDatosDeAlojamientoOComida.java</file>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/ventanastesis/view/PanelCompletarDatosDeDocentes.java</file>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/ventanastesis/view/PanelSolicitudesACompletarOGAGTD.java</file>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/ventanastesis/view/PanelAdministrarRegistroUnico.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/controller/SolicitudesACompletarController.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/view/PanelIniciarSolicitud.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/model/OgagtdDAO.java</file>
         </group>
     </open-files>
 </project-private>
