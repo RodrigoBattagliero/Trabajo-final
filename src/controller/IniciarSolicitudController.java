@@ -5,6 +5,7 @@
  */
 package controller;
 
+import model.DatosDocentesDAO;
 import model.SolicitudDAO;
 import view.PanelCompletarDatosDeDocentes;
 import view.PanelIniciarSolicitud;
@@ -32,11 +33,12 @@ public class IniciarSolicitudController {
     }
     
     public void btnGuardarActionPerformed(java.awt.event.ActionEvent evt){
-        PanelCompletarDatosDeDocentes datosDocente = new PanelCompletarDatosDeDocentes();
-        datosDocente.setVisible(true);
-        this.view.pDatosDocentes.add(datosDocente);
+        PanelCompletarDatosDeDocentes datosDocenteView = new PanelCompletarDatosDeDocentes();
+        DatosDocentesDAO datosDocentesDAO = new DatosDocentesDAO();
+        DatosDocentesController datosDocentesController = new DatosDocentesController(datosDocenteView,datosDocentesDAO);
+        datosDocentesController.init();
+        this.view.pDatosDocentes.add(datosDocenteView);
         this.view.pDatosDocentes.setVisible(true);
-        datosDocente.setVisible(true);
         disableFields();
         this.view.updateUI();
     }

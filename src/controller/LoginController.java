@@ -30,6 +30,7 @@ public class LoginController implements ActionListener {
     
     public void init(){
         this.LoginView.setVisible(true);
+        this.LoginView.setLocationRelativeTo(null);
         this.LoginView.btnIngresar.addActionListener(this);
     }
     

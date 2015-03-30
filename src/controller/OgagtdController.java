@@ -13,7 +13,7 @@ import model.SolicitudDAO;
 import view.PanelAdministrarRegistroUnico;
 import view.PanelCompletarDatosDeAlojamientoOComida;
 import view.PanelCompletarDatosDeDocentes;
-import view.PanelCompletarDatosDeTrasalado;
+import view.PanelCompletarDatosDeTraslado;
 import view.PanelConfirmarLoteDeSolicitudesProcesadas;
 import view.PanelCrearRegistroUnico;
 import view.PanelIniciarSolicitud;
@@ -37,7 +37,7 @@ public class OgagtdController {
     //
     private PanelCompletarDatosDeDocentes CompletarDatosDeDocentes;
     //
-    private PanelCompletarDatosDeTrasalado CompletarDatosDeTrasalado;
+    private PanelCompletarDatosDeTraslado CompletarDatosDeTrasalado;
     //
     private PanelConfirmarLoteDeSolicitudesProcesadas ConfirmarLoteDeSolicitudesProcesadas;
     //
@@ -61,6 +61,7 @@ public class OgagtdController {
     
     public void init(){
         this.View.setVisible(true);
+        this.View.setLocationRelativeTo(null);
         this.View.mItemIniciarNuevaSolicitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mItemIniciarNuevaSolicitudActionPerformed(evt);
@@ -135,7 +136,7 @@ public class OgagtdController {
     }
     
     public void setCompletarDatosDeTrasalado(){
-        CompletarDatosDeTrasalado = new PanelCompletarDatosDeTrasalado();
+        CompletarDatosDeTrasalado = new PanelCompletarDatosDeTraslado();
         CompletarDatosDeTrasalado.setVisible(true);
         this.View.jScrollPane1.setViewportView(CompletarDatosDeTrasalado);
     }

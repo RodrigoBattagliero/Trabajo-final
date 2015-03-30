@@ -9,6 +9,6 @@ package model;
  *
  * @author rodrigo
  */
-public class CompletarDatosDocentesDAO {
+public class DatosDocentesDAO {
     
 }
