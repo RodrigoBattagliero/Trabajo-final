@@ -37,8 +37,10 @@ public class PanelIniciarSolicitud extends javax.swing.JPanel {
         txtObservaciones = new javax.swing.JTextArea();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        pDatosDocentes = new javax.swing.JPanel();
+        pnlDatosDocente = new javax.swing.JPanel();
         txtFechaDePresentacion = new com.toedter.calendar.JDateChooser();
+        pnlComprobanteTraslado = new javax.swing.JPanel();
+        pnlRegistroUnico = new javax.swing.JPanel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Inciar nueva soliciutd");
@@ -59,7 +61,11 @@ public class PanelIniciarSolicitud extends javax.swing.JPanel {
 
         btnCancelar.setText("Cancelar");
 
-        pDatosDocentes.setLayout(new java.awt.BorderLayout());
+        pnlDatosDocente.setLayout(new java.awt.BorderLayout());
+
+        pnlComprobanteTraslado.setLayout(new java.awt.BorderLayout());
+
+        pnlRegistroUnico.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -74,12 +80,13 @@ public class PanelIniciarSolicitud extends javax.swing.JPanel {
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(txtNumeroDeSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(txtFechaDePresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(13, 13, 13))
-                    .addComponent(pDatosDocentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlDatosDocente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlComprobanteTraslado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -90,7 +97,8 @@ public class PanelIniciarSolicitud extends javax.swing.JPanel {
                                 .addComponent(btnGuardar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCancelar)))
-                        .addGap(0, 187, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(pnlRegistroUnico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -116,8 +124,12 @@ public class PanelIniciarSolicitud extends javax.swing.JPanel {
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pDatosDocentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addComponent(pnlDatosDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(pnlComprobanteTraslado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pnlRegistroUnico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(125, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -131,7 +143,9 @@ public class PanelIniciarSolicitud extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    public javax.swing.JPanel pDatosDocentes;
+    public javax.swing.JPanel pnlComprobanteTraslado;
+    public javax.swing.JPanel pnlDatosDocente;
+    public javax.swing.JPanel pnlRegistroUnico;
     public com.toedter.calendar.JDateChooser txtFechaDePresentacion;
     public javax.swing.JTextField txtNumeroDeSolicitud;
     public javax.swing.JTextArea txtObservaciones;

@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
 import model.DatosDocentesDAO;
 import model.DatosTrasladoDAO;
 import view.PanelCompletarDatosDeDocentes;
+import view.PanelCompletarDatosDeTrasladoVIEJO;
 import view.PanelCompletarDatosDeTraslado;
-import view.PanelCompletarDatosDeTraslado2;
 
 /**
  *
@@ -18,12 +18,15 @@ import view.PanelCompletarDatosDeTraslado2;
  */
 public class DatosDocentesController {
     
-    PanelCompletarDatosDeDocentes view;
-    DatosDocentesDAO model;
+    private IniciarSolicitudController solicitudController;
     
-    public DatosDocentesController(PanelCompletarDatosDeDocentes v, DatosDocentesDAO m) {
+    private PanelCompletarDatosDeDocentes view;
+    private DatosDocentesDAO model;
+    
+    public DatosDocentesController(PanelCompletarDatosDeDocentes v, DatosDocentesDAO m, IniciarSolicitudController solicitudController) {
         this.view = v;
         this.model = m;
+        this.solicitudController = solicitudController;
     }
     
     public void init(){
@@ -36,15 +39,8 @@ public class DatosDocentesController {
     }
     
     public void btnAceptarActionPerformed(java.awt.event.ActionEvent evt){
-        PanelCompletarDatosDeTraslado2 datosTrasladoView = new PanelCompletarDatosDeTraslado2();
-        DatosTrasladoDAO datosTrasladoDAO = new DatosTrasladoDAO();
-        DatosTrasladoController datosTrasladoController = new DatosTrasladoController(datosTrasladoView,datosTrasladoDAO);
-        datosTrasladoController.init();
-        
-        this.view.pDatosDeTraslado.add(datosTrasladoView);
-        this.view.pDatosDeTraslado.setVisible(true);
+        this.solicitudController.comprobanteDeTraslado();
         disableFields();
-        this.view.updateUI();
     }
     
     public void disableFields(){

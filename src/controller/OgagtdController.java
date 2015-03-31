@@ -11,9 +11,9 @@ import javax.swing.JOptionPane;
 import model.OgagtdDAO;
 import model.SolicitudDAO;
 import view.PanelAdministrarRegistroUnico;
-import view.PanelCompletarDatosDeAlojamientoOComida;
+import view.PanelCompletarDatosDeAlojamientoOComidaVIEJO;
 import view.PanelCompletarDatosDeDocentes;
-import view.PanelCompletarDatosDeTraslado;
+import view.PanelCompletarDatosDeTrasladoVIEJO;
 import view.PanelConfirmarLoteDeSolicitudesProcesadas;
 import view.PanelCrearRegistroUnico;
 import view.PanelIniciarSolicitud;
@@ -33,11 +33,11 @@ public class OgagtdController {
     //
     private PanelAdministrarRegistroUnico AdministrarRegistroUnico;
     //
-    private PanelCompletarDatosDeAlojamientoOComida CompletarDatosDeAlojamientoOComida;
+    private PanelCompletarDatosDeAlojamientoOComidaVIEJO CompletarDatosDeAlojamientoOComida;
     //
     private PanelCompletarDatosDeDocentes CompletarDatosDeDocentes;
     //
-    private PanelCompletarDatosDeTraslado CompletarDatosDeTrasalado;
+    private PanelCompletarDatosDeTrasladoVIEJO CompletarDatosDeTrasalado;
     //
     private PanelConfirmarLoteDeSolicitudesProcesadas ConfirmarLoteDeSolicitudesProcesadas;
     //
@@ -124,7 +124,7 @@ public class OgagtdController {
     *
     */
     public void setPanelCompletarDatosDeAlojamientoOComida(){
-        CompletarDatosDeAlojamientoOComida = new PanelCompletarDatosDeAlojamientoOComida();
+        CompletarDatosDeAlojamientoOComida = new PanelCompletarDatosDeAlojamientoOComidaVIEJO();
         CompletarDatosDeAlojamientoOComida.setVisible(true);
         this.View.jScrollPane1.setViewportView(CompletarDatosDeAlojamientoOComida);
     }
@@ -136,7 +136,7 @@ public class OgagtdController {
     }
     
     public void setCompletarDatosDeTrasalado(){
-        CompletarDatosDeTrasalado = new PanelCompletarDatosDeTraslado();
+        CompletarDatosDeTrasalado = new PanelCompletarDatosDeTrasladoVIEJO();
         CompletarDatosDeTrasalado.setVisible(true);
         this.View.jScrollPane1.setViewportView(CompletarDatosDeTrasalado);
     }
