@@ -38,6 +38,10 @@ public class VentanaOgagtd extends javax.swing.JFrame {
         mAdministracion = new javax.swing.JMenu();
         mItemConfirmarLoteDeSolicitudesProcesadas = new javax.swing.JMenuItem();
         mItemListarHistorialDeSolicitudesProcesadas = new javax.swing.JMenuItem();
+        mItemConsultarRegistroUnico = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        mItemGenerarNuevoExpediente = new javax.swing.JMenuItem();
+        mItemListarHistorialExpedientes = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuItemSalir = new javax.swing.JMenuItem();
 
@@ -61,7 +65,30 @@ public class VentanaOgagtd extends javax.swing.JFrame {
         mItemListarHistorialDeSolicitudesProcesadas.setText("Listar historlal de solicitudes procesadas");
         mAdministracion.add(mItemListarHistorialDeSolicitudesProcesadas);
 
+        mItemConsultarRegistroUnico.setText("Consultar registro unico");
+        mItemConsultarRegistroUnico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemConsultarRegistroUnicoActionPerformed(evt);
+            }
+        });
+        mAdministracion.add(mItemConsultarRegistroUnico);
+
         jMenuBar1.add(mAdministracion);
+
+        jMenu1.setText("Expediente");
+
+        mItemGenerarNuevoExpediente.setText("Generar nuevo expediente");
+        jMenu1.add(mItemGenerarNuevoExpediente);
+
+        mItemListarHistorialExpedientes.setText("Listar historial de expedientes");
+        mItemListarHistorialExpedientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemListarHistorialExpedientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mItemListarHistorialExpedientes);
+
+        jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Usuario");
 
@@ -85,6 +112,14 @@ public class VentanaOgagtd extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mItemListarHistorialExpedientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemListarHistorialExpedientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mItemListarHistorialExpedientesActionPerformed
+
+    private void mItemConsultarRegistroUnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemConsultarRegistroUnicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mItemConsultarRegistroUnicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,14 +160,18 @@ public class VentanaOgagtd extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu mAdministracion;
     public javax.swing.JMenuItem mItemConfirmarLoteDeSolicitudesProcesadas;
+    public javax.swing.JMenuItem mItemConsultarRegistroUnico;
+    public javax.swing.JMenuItem mItemGenerarNuevoExpediente;
     public javax.swing.JMenuItem mItemIniciarNuevaSolicitud;
     public javax.swing.JMenuItem mItemListarHistorialDeSolicitudesProcesadas;
+    public javax.swing.JMenuItem mItemListarHistorialExpedientes;
     public javax.swing.JMenuItem mItemSolicitudesACompletar;
     public javax.swing.JMenuItem menuItemSalir;
     // End of variables declaration//GEN-END:variables

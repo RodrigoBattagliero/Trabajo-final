@@ -30,37 +30,34 @@ public class PanelConfirmarLoteDeSolicitudesProcesadas extends javax.swing.JPane
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tblDatos = new javax.swing.JTable();
+        btnConfirmarSolicitudes = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Confirmar lote de solicitudes procesadas");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"01-2015", "Apellido, nombre", "19/01/2015", "Exactas", null},
-                {"02-2015", "Apellido, nombre", "19/01/2015", "Exactas", null},
-                {"03-2015", "Apellido, nombre", "19/01/2015", "Exactas", null},
-                {"04-2015", "Apellido, nombre", "19/01/2015", "Exactas", null}
+
             },
             new String [] {
-                "N° de solicitud", "Docente", "Fecha de presentanción", "Depto académico", "Designación"
+                "N° de solicitud", "Docente", "Fecha de presentanción", "Depto académico", "Designación", "id R.U"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tblDatos);
 
-        jButton1.setText("Confirmar solicitudes");
+        btnConfirmarSolicitudes.setText("Confirmar solicitudes");
 
-        jButton2.setText("Cancelar");
+        btnCancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,9 +78,9 @@ public class PanelConfirmarLoteDeSolicitudesProcesadas extends javax.swing.JPane
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(btnConfirmarSolicitudes)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btnCancelar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -97,19 +94,19 @@ public class PanelConfirmarLoteDeSolicitudesProcesadas extends javax.swing.JPane
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnConfirmarSolicitudes)
+                    .addComponent(btnCancelar))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JButton btnCancelar;
+    public javax.swing.JButton btnConfirmarSolicitudes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable tblDatos;
     // End of variables declaration//GEN-END:variables
 }

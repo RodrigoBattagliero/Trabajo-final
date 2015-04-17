@@ -47,9 +47,7 @@ public class PanelCompletarDatosDeDocentes extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         txtApellido = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtFechaHoraIncio = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtFechaHoraFinalizacion = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -58,13 +56,13 @@ public class PanelCompletarDatosDeDocentes extends javax.swing.JPanel {
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         pDatosDeTraslado = new javax.swing.JPanel();
+        dateFechaHoraIncio = new com.toedter.calendar.JDateChooser();
+        dateFechaHoraFinalizacion = new com.toedter.calendar.JDateChooser();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Datos de docentes");
 
         jLabel2.setText("Depto académico");
-
-        cbxDeptoAcademico.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Sociales", "Exactas", "etc" }));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -109,6 +107,10 @@ public class PanelCompletarDatosDeDocentes extends javax.swing.JPanel {
 
         pDatosDeTraslado.setLayout(new java.awt.BorderLayout());
 
+        dateFechaHoraIncio.setDateFormatString("dd-MMM-yyyy HH:mm:ss");
+
+        dateFechaHoraFinalizacion.setDateFormatString("dd-MMM-yyyy HH:mm:ss");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,22 +143,26 @@ public class PanelCompletarDatosDeDocentes extends javax.swing.JPanel {
                                         .addComponent(cbxDeptoAcademico, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(28, 28, 28)
                                 .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(39, 39, 39)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                                            .addComponent(jLabel10)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel11)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtLugarDeResidencia)
                                     .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                     .addComponent(txtMotivoDeComision)
-                                    .addComponent(txtFechaHoraIncio)
-                                    .addComponent(txtFechaHoraFinalizacion))))
+                                    .addComponent(dateFechaHoraIncio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(dateFechaHoraFinalizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -223,13 +229,13 @@ public class PanelCompletarDatosDeDocentes extends javax.swing.JPanel {
                             .addComponent(jLabel8)
                             .addComponent(txtMotivoDeComision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
-                            .addComponent(txtFechaHoraIncio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dateFechaHoraIncio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
-                            .addComponent(txtFechaHoraFinalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(dateFechaHoraFinalizacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -245,7 +251,7 @@ public class PanelCompletarDatosDeDocentes extends javax.swing.JPanel {
                     .addComponent(btnCancelar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pDatosDeTraslado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -262,6 +268,8 @@ public class PanelCompletarDatosDeDocentes extends javax.swing.JPanel {
     public javax.swing.JButton btnAceptar;
     public javax.swing.JButton btnCancelar;
     public javax.swing.JComboBox cbxDeptoAcademico;
+    public com.toedter.calendar.JDateChooser dateFechaHoraFinalizacion;
+    public com.toedter.calendar.JDateChooser dateFechaHoraIncio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -283,8 +291,6 @@ public class PanelCompletarDatosDeDocentes extends javax.swing.JPanel {
     public javax.swing.JTextField txtApellido;
     public javax.swing.JTextField txtDni;
     public javax.swing.JTextField txtEmail;
-    public javax.swing.JTextField txtFechaHoraFinalizacion;
-    public javax.swing.JTextField txtFechaHoraIncio;
     public javax.swing.JTextField txtLugarDeResidencia;
     public javax.swing.JTextField txtMotivoDeComision;
     public javax.swing.JTextField txtNombre;

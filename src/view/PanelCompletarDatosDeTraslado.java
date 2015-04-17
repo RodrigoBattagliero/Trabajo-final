@@ -5,6 +5,14 @@
  */
 package view;
 
+import com.toedter.calendar.JDateChooser;
+import java.awt.Component;
+import java.util.Date;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
+import resources.DateManager;
+
 /**
  *
  * @author rodrigo
@@ -16,6 +24,62 @@ public class PanelCompletarDatosDeTraslado extends javax.swing.JPanel {
      */
     public PanelCompletarDatosDeTraslado() {
         initComponents();
+        initTable();
+    }
+    
+    public void initTable(){
+        String[] columnas = new String[]{
+            "N° comprobante", 
+            "Proveedor", 
+            "Importe", 
+            "Salida Desde", 
+            "Salida Fecha y Hora", 
+            "Regreso Desde", 
+            "Regreso Fecha y hora", 
+            "Observaciones"
+        };
+        final Class[] tiposColumnas = new Class[]{
+            java.lang.String.class, 
+            java.lang.String.class, 
+            java.lang.Double.class, 
+            java.lang.String.class, 
+            //com.toedter.calendar.JDateChooser.class, 
+            DateManager.class,
+            java.lang.String.class, 
+            //com.toedter.calendar.JDateChooser.class, 
+            DateManager.class,
+            java.lang.String.class
+        };
+        
+        Object[][] datos = new Object [][] {
+            };
+        
+        this.tblDatosTraslado.setModel(new javax.swing.table.DefaultTableModel
+            (datos,columnas){
+                Class[] tipos = tiposColumnas;
+                @Override
+                public Class getColumnClass(int columnIndex) {
+                    // Este método es invocado por el CellRenderer para saber que dibujar en la celda,
+                    // observen que estamos retornando la clase que definimos de antemano.
+                    return tipos[columnIndex];
+                }
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    // Sobrescribimos este método para evitar que la columna que contiene los botones sea editada.
+                    return true;
+                }
+            }
+        );
+        
+        this.tblDatosTraslado.setDefaultRenderer(JDateChooser.class, 
+                new TableCellRenderer(){
+                    @Override
+                    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                        return (Component) value;
+                    }
+                }
+        );
+                
     }
 
     /**
@@ -35,18 +99,25 @@ public class PanelCompletarDatosDeTraslado extends javax.swing.JPanel {
         pnlDatosAlojamientoComida = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        btnAgregarFila = new javax.swing.JButton();
+        btnEliminarFila = new javax.swing.JButton();
 
         tblDatosTraslado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "N° comprobante", "Proveedor", "Importe", "Salida Desde", "Salida Fecha y Hora", "Regreso Desde", "Regreso Fecha y hora", "Observaciones"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblDatosTraslado);
 
         btnAceptar.setText("Aceptar");
@@ -70,6 +141,15 @@ public class PanelCompletarDatosDeTraslado extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Completar datos de traslado");
 
+        btnAgregarFila.setText("Agregar fila");
+        btnAgregarFila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarFilaActionPerformed(evt);
+            }
+        });
+
+        btnEliminarFila.setText("Eliminar fila seleccionada");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,15 +158,21 @@ public class PanelCompletarDatosDeTraslado extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(308, 308, 308)
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 236, Short.MAX_VALUE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(pnlDatosAlojamientoComida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnAgregarFila)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlDatosAlojamientoComida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnEliminarFila)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnAceptar)
@@ -107,12 +193,20 @@ public class PanelCompletarDatosDeTraslado extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlDatosAlojamientoComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAceptar)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnAgregarDatosAlojamientoComida))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAceptar)
+                            .addComponent(btnCancelar)
+                            .addComponent(btnAgregarDatosAlojamientoComida))
+                        .addContainerGap(52, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAgregarFila)
+                            .addComponent(btnEliminarFila))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -124,11 +218,17 @@ public class PanelCompletarDatosDeTraslado extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarDatosAlojamientoComidaActionPerformed
 
+    private void btnAgregarFilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarFilaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarFilaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAceptar;
     public javax.swing.JButton btnAgregarDatosAlojamientoComida;
+    public javax.swing.JButton btnAgregarFila;
     public javax.swing.JButton btnCancelar;
+    public javax.swing.JButton btnEliminarFila;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

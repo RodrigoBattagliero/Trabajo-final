@@ -49,25 +49,32 @@
                               </Group>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Component id="jSeparator2" pref="1" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txtLugarDeResidencia" max="32767" attributes="0"/>
                                   <Component id="txtEmail" pref="150" max="32767" attributes="0"/>
                                   <Component id="txtMotivoDeComision" max="32767" attributes="0"/>
-                                  <Component id="txtFechaHoraIncio" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtFechaHoraFinalizacion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="dateFechaHoraIncio" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="dateFechaHoraFinalizacion" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -156,14 +163,14 @@
                           <Component id="txtMotivoDeComision" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFechaHoraIncio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                          <Component id="dateFechaHoraIncio" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFechaHoraFinalizacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                          <Component id="dateFechaHoraFinalizacion" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jSeparator2" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
@@ -184,7 +191,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pDatosDeTraslado" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="56" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -208,12 +215,7 @@
     <Component class="javax.swing.JComboBox" name="cbxDeptoAcademico">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Seleccionar"/>
-            <StringItem index="1" value="Sociales"/>
-            <StringItem index="2" value="Exactas"/>
-            <StringItem index="3" value="etc"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -303,20 +305,10 @@
         <Property name="text" type="java.lang.String" value="Fecha y hora de inicio"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtFechaHoraIncio">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
         <Property name="text" type="java.lang.String" value="Fecha y hora de finalizaci&#xf3;n"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtFechaHoraFinalizacion">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator3">
     </Component>
@@ -371,5 +363,21 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
     </Container>
+    <Component class="com.toedter.calendar.JDateChooser" name="dateFechaHoraIncio">
+      <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="dd-MMM-yyyy HH:mm:ss"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="dateFechaHoraFinalizacion">
+      <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="dd-MMM-yyyy HH:mm:ss"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
   </SubComponents>
 </Form>

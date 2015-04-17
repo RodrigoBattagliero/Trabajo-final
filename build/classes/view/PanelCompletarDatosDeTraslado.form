@@ -20,17 +20,25 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="753" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="308" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="236" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlDatosAlojamientoComida" max="32767" attributes="0"/>
+                      <Component id="btnAgregarFila" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pnlDatosAlojamientoComida" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="btnEliminarFila" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -56,13 +64,25 @@
               <Component id="jScrollPane1" min="-2" pref="91" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="pnlDatosAlojamientoComida" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAceptar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAgregarDatosAlojamientoComida" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnAceptar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAgregarDatosAlojamientoComida" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="52" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnAgregarFila" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnEliminarFila" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="52" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,15 +98,15 @@
         <Component class="javax.swing.JTable" name="tblDatosTraslado">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="8" rowCount="4">
-                <Column editable="true" title="N&#xb0; comprobante" type="java.lang.Object"/>
-                <Column editable="true" title="Proveedor" type="java.lang.Object"/>
-                <Column editable="true" title="Importe" type="java.lang.Object"/>
-                <Column editable="true" title="Salida Desde" type="java.lang.Object"/>
-                <Column editable="true" title="Salida Fecha y Hora" type="java.lang.Object"/>
+              <Table columnCount="8" rowCount="0">
+                <Column editable="true" title="N&#xb0; comprobante" type="java.lang.String"/>
+                <Column editable="true" title="Proveedor" type="java.lang.String"/>
+                <Column editable="true" title="Importe" type="java.lang.Double"/>
+                <Column editable="true" title="Salida Desde" type="java.lang.String"/>
+                <Column editable="true" title="Salida Fecha y Hora" type="java.lang.String"/>
                 <Column editable="true" title="Regreso Desde" type="java.lang.Object"/>
                 <Column editable="true" title="Regreso Fecha y hora" type="java.lang.Object"/>
-                <Column editable="true" title="Observaciones" type="java.lang.Object"/>
+                <Column editable="true" title="Observaciones" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -189,6 +209,25 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAgregarFila">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Agregar fila"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarFilaActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEliminarFila">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Eliminar fila seleccionada"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

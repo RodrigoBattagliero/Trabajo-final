@@ -8,16 +8,23 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import model.CompletarDatosOgagtdDAO;
+import model.ConfirmarLoteDAO;
+import model.ExpedienteDAO;
+import model.HistorialSolicitudesDAO;
 import model.OgagtdDAO;
+import model.RegistroUnicoDAO;
 import model.SolicitudDAO;
 import view.PanelAdministrarRegistroUnico;
 import view.PanelCompletarDatosDeAlojamientoOComidaVIEJO;
 import view.PanelCompletarDatosDeDocentes;
 import view.PanelCompletarDatosDeTrasladoVIEJO;
 import view.PanelConfirmarLoteDeSolicitudesProcesadas;
+import view.PanelConsultarRegistroUnico;
 import view.PanelCrearRegistroUnico;
+import view.PanelGenerarExpediente;
 import view.PanelIniciarSolicitud;
-import view.PanelListarSolicitudesProcesadas;
+import view.PanelHistorialSolicitudesProcesadas;
 import view.PanelSolicitudesACompletarOGAGTD;
 import view.VentanaOgagtd;
 
@@ -27,67 +34,102 @@ import view.VentanaOgagtd;
  */
 public class OgagtdController {
     
-    private VentanaOgagtd View;
+    private VentanaOgagtd view;
     private OgagtdDAO modelDAO;
     
     //
-    private PanelAdministrarRegistroUnico AdministrarRegistroUnico;
+    private PanelAdministrarRegistroUnico administrarRegistroUnico;
     //
-    private PanelCompletarDatosDeAlojamientoOComidaVIEJO CompletarDatosDeAlojamientoOComida;
+    private PanelCompletarDatosDeAlojamientoOComidaVIEJO completarDatosDeAlojamientoOComida;
     //
-    private PanelCompletarDatosDeDocentes CompletarDatosDeDocentes;
+    private PanelCompletarDatosDeDocentes completarDatosDeDocentes;
     //
-    private PanelCompletarDatosDeTrasladoVIEJO CompletarDatosDeTrasalado;
+    private PanelCompletarDatosDeTrasladoVIEJO completarDatosDeTrasalado;
+    // 
+    private ConfirmarLoteController confirmarLoteController;
     //
-    private PanelConfirmarLoteDeSolicitudesProcesadas ConfirmarLoteDeSolicitudesProcesadas;
-    //
-    private PanelCrearRegistroUnico CrearRegistroUnico;
+    private PanelCrearRegistroUnico crearRegistroUnico;
     
     // MVC Iniciar solicitud
-    private PanelIniciarSolicitud IniciarSolicitud;
+    private PanelIniciarSolicitud iniciarSolicitud;
     private IniciarSolicitudController inicarSolicitudController;
     private SolicitudDAO inciarSolicitudDAO;
     
-    //
-    private PanelListarSolicitudesProcesadas ListarSolicitudesProcesadas;
-    //
-    private PanelSolicitudesACompletarOGAGTD SolicitudesACompletarOGAGTD;
-    //
+    // Historial de solicitudes procesadas
+    private PanelHistorialSolicitudesProcesadas historialSolicitudesView;
+    private HistorialSolicitudesDAO historialSolicitudesDAO;
+    private historialSolicitudesController historialSolicitudesController;
+    
+    // Solicitudes a completar por OGAGTD
+    private PanelSolicitudesACompletarOGAGTD solicitudesACompletarView;
+    private CompletarDatosOgagtdDAO solicitudesACompletarDAO;
+    private CompletarDatosOgagtdController solcitudesACompletarController;
+    
+    // Generar solicitudes
+    private PanelGenerarExpediente generarExpedienteView;
+    private ExpedienteDAO generarExpedienteModel;
+    private ExpedienteController generarExpedienteController;
+    
+    // Registro unico
+    private PanelConsultarRegistroUnico registroUnicoView;
+    private RegistroUnicoDAO registroUnicoModel;
+    private CrearRegistroUnicoController registroUnicoController;
+    
 
     public OgagtdController(VentanaOgagtd View, OgagtdDAO modelDAO) {
-        this.View = View;
+        this.view = View;
         this.modelDAO = modelDAO;
     }
     
     public void init(){
-        this.View.setVisible(true);
-        this.View.setLocationRelativeTo(null);
-        this.View.mItemIniciarNuevaSolicitud.addActionListener(new java.awt.event.ActionListener() {
+        this.view.setVisible(true);
+        this.view.setLocationRelativeTo(null);
+        this.view.mItemIniciarNuevaSolicitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mItemIniciarNuevaSolicitudActionPerformed(evt);
             }
         });
-        this.View.mItemSolicitudesACompletar.addActionListener(new java.awt.event.ActionListener() {
+        this.view.mItemSolicitudesACompletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mItemSolicitudesACompletarActionPerformed(evt);
             }
         });
-        this.View.mItemConfirmarLoteDeSolicitudesProcesadas.addActionListener(new java.awt.event.ActionListener() {
+        this.view.mItemConfirmarLoteDeSolicitudesProcesadas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mItemConfirmarLoteDeSolicitudesProcesadasActionPerformed(evt);
             }
         });
-        this.View.mItemListarHistorialDeSolicitudesProcesadas.addActionListener(new java.awt.event.ActionListener() {
+        this.view.mItemListarHistorialDeSolicitudesProcesadas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mItemListarHistorialDeSolicitudesProcesadasActionPerformed(evt);
             }
         });
-        this.View.menuItemSalir.addActionListener(new java.awt.event.ActionListener() {
+        this.view.menuItemSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemSalirActionPerformed(evt);
             }
         });
+        
+        this.view.mItemGenerarNuevoExpediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemGenerarNuevoExpedienteActionPerformed(evt);
+            }
+        });
+        
+        this.view.mItemListarHistorialExpedientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemListarHistorialExpedientesActionPerformed(evt);
+            }
+        });
+        
+        this.view.mItemConsultarRegistroUnico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemConsultarRegistroUnicoActionPerformed(evt);
+            }
+        });
+        
     }
+    
     
     /*
     *
@@ -99,8 +141,7 @@ public class OgagtdController {
     }
     
     public void mItemSolicitudesACompletarActionPerformed(java.awt.event.ActionEvent evt){
-        this.View.removeAll();
-        setPanelSolicitudesACompletarOGAGTD();
+        setPanelSolicitudesACompletar();
     }
 
     
@@ -109,14 +150,27 @@ public class OgagtdController {
     }
     
     public void mItemListarHistorialDeSolicitudesProcesadasActionPerformed(java.awt.event.ActionEvent evt){
-        this.View.removeAll();
         setPanelListarSolicitudesProcesadas();
     }
     
+    private void mItemGenerarNuevoExpedienteActionPerformed(ActionEvent evt) {
+        setPanelGenerarExpediente();
+    }
+    
+    private void mItemListarHistorialExpedientesActionPerformed(ActionEvent evt) {
+        setHistorialExpediente();
+    }
+    
+    private void mItemConsultarRegistroUnicoActionPerformed(ActionEvent evt) {
+        setConsultarRegistroUnico();
+    }
+     
     public void menuItemSalirActionPerformed(java.awt.event.ActionEvent evt){
-        this.View.removeAll();
+        this.view.removeAll();
         System.exit(0);
     }
+    
+    
     
     /*
     *
@@ -124,55 +178,88 @@ public class OgagtdController {
     *
     */
     public void setPanelCompletarDatosDeAlojamientoOComida(){
-        CompletarDatosDeAlojamientoOComida = new PanelCompletarDatosDeAlojamientoOComidaVIEJO();
-        CompletarDatosDeAlojamientoOComida.setVisible(true);
-        this.View.jScrollPane1.setViewportView(CompletarDatosDeAlojamientoOComida);
+        completarDatosDeAlojamientoOComida = new PanelCompletarDatosDeAlojamientoOComidaVIEJO();
+        completarDatosDeAlojamientoOComida.setVisible(true);
+        this.view.jScrollPane1.setViewportView(completarDatosDeAlojamientoOComida);
     }
     
     public void setPanelCompletarDatosDeDocentes(){
-        CompletarDatosDeDocentes = new PanelCompletarDatosDeDocentes();
-        CompletarDatosDeDocentes.setVisible(true);
-        this.View.jScrollPane1.setViewportView(CompletarDatosDeDocentes);
+        completarDatosDeDocentes = new PanelCompletarDatosDeDocentes();
+        completarDatosDeDocentes.setVisible(true);
+        this.view.jScrollPane1.setViewportView(completarDatosDeDocentes);
     }
     
     public void setCompletarDatosDeTrasalado(){
-        CompletarDatosDeTrasalado = new PanelCompletarDatosDeTrasladoVIEJO();
-        CompletarDatosDeTrasalado.setVisible(true);
-        this.View.jScrollPane1.setViewportView(CompletarDatosDeTrasalado);
+        completarDatosDeTrasalado = new PanelCompletarDatosDeTrasladoVIEJO();
+        completarDatosDeTrasalado.setVisible(true);
+        this.view.jScrollPane1.setViewportView(completarDatosDeTrasalado);
     }
     
     public void setPanelConfirmarLoteDeSolicitudesProcesadas(){
-        ConfirmarLoteDeSolicitudesProcesadas = new PanelConfirmarLoteDeSolicitudesProcesadas();
-        ConfirmarLoteDeSolicitudesProcesadas.setVisible(true);
-        this.View.jScrollPane1.setViewportView(ConfirmarLoteDeSolicitudesProcesadas);
+        ConfirmarLoteController confirmarLoteController = new ConfirmarLoteController(new PanelConfirmarLoteDeSolicitudesProcesadas(), new RegistroUnicoDAO());
+        confirmarLoteController.init();
+        this.view.jScrollPane1.setViewportView(confirmarLoteController.getView());
+        
     }
     
     public void setPanelCrearRegistroUnico(){
-        CrearRegistroUnico = new PanelCrearRegistroUnico();
-        CrearRegistroUnico.setVisible(true);
-        this.View.jScrollPane1.setViewportView(CrearRegistroUnico);
+        crearRegistroUnico = new PanelCrearRegistroUnico();
+        crearRegistroUnico.setVisible(true);
+        this.view.jScrollPane1.setViewportView(crearRegistroUnico);
     }
     
      public void setPanelIniciarSolicitud(){
-        IniciarSolicitud = new PanelIniciarSolicitud();
+        iniciarSolicitud = new PanelIniciarSolicitud();
         inciarSolicitudDAO = new SolicitudDAO();
-        inicarSolicitudController = new IniciarSolicitudController(IniciarSolicitud, inciarSolicitudDAO);
+        inicarSolicitudController = new IniciarSolicitudController(iniciarSolicitud, inciarSolicitudDAO);
         inicarSolicitudController.init();
-        this.View.jScrollPane1.setViewportView(IniciarSolicitud);
+        this.view.jScrollPane1.setViewportView(iniciarSolicitud);
     }
    
     public void setPanelListarSolicitudesProcesadas(){
-        ListarSolicitudesProcesadas = new PanelListarSolicitudesProcesadas();
-        ListarSolicitudesProcesadas.setVisible(true);
-        this.View.jScrollPane1.setViewportView(ListarSolicitudesProcesadas);
+        PanelHistorialSolicitudesProcesadas historialSolicitudesView = new PanelHistorialSolicitudesProcesadas();
+        HistorialSolicitudesDAO historialSolicitudesDAO = new HistorialSolicitudesDAO();
+        historialSolicitudesController historialSolicitudesController = new historialSolicitudesController(historialSolicitudesView, historialSolicitudesDAO);
+        historialSolicitudesController.init();
+        this.view.jScrollPane1.setViewportView(historialSolicitudesView);
     }
     
     public void setPanelSolicitudesACompletarOGAGTD(){
-        SolicitudesACompletarOGAGTD = new PanelSolicitudesACompletarOGAGTD();
-        SolicitudesACompletarOGAGTD.setVisible(true);
-        this.View.jScrollPane1.setViewportView(SolicitudesACompletarOGAGTD);
+        solicitudesACompletarView = new PanelSolicitudesACompletarOGAGTD();
+        solicitudesACompletarView.setVisible(true);
+        this.view.jScrollPane1.setViewportView(solicitudesACompletarView);
     }
     
+    public void setPanelSolicitudesACompletar(){
+        solcitudesACompletarController = new CompletarDatosOgagtdController(
+                new PanelSolicitudesACompletarOGAGTD(),
+                new CompletarDatosOgagtdDAO()
+             );
+        solcitudesACompletarController.init();
+        
+        this.view.jScrollPane1.setViewportView(solcitudesACompletarController.getView());
+        
+    }
+    
+    public void setPanelGenerarExpediente(){
+        generarExpedienteView = new PanelGenerarExpediente();
+        generarExpedienteModel = new ExpedienteDAO();
+        generarExpedienteController = new ExpedienteController(generarExpedienteView, generarExpedienteModel);
+        generarExpedienteController.init();
+        
+        this.view.jScrollPane1.setViewportView(generarExpedienteView);
+    }
+    
+    public void setHistorialExpediente(){
+        
+    }
+    
+    public void setConsultarRegistroUnico(){
+        registroUnicoView = new PanelConsultarRegistroUnico();
+        //registroUnicoModel = new RegistroUnicoDAO();
+        //registroUnicoController = new CrearRegistroUnicoController(crearRegistroUnico, registroUnicoModel, inicarSolicitudController)
+        this.view.jScrollPane1.setViewportView(registroUnicoView);
+    }
     
     
     
