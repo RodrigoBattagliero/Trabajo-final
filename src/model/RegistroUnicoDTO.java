@@ -27,7 +27,7 @@ public class RegistroUnicoDTO {
 
     public RegistroUnicoDTO(int id, DateManager fecha_entrada, DateManager fecha_salida, boolean confirmado, String observaciones, int id_solicitud, int id_area, int id_estado) {
         this.id = id;
-        if(fecha_salida != null)
+        if(fecha_entrada != null)
             this.fecha_entrada = fecha_entrada;
         else
             this.fecha_entrada = new DateManager("00-00-000 00:00:00");

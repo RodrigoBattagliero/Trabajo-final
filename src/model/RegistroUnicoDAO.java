@@ -52,6 +52,11 @@ public class RegistroUnicoDAO implements Consultas<RegistroUnicoDTO> {
             + "FROM registros_unicos "
             + "WHERE id_area = ? AND id_estado = ? AND confirmado = false "
             + "ORDER BY fecha_entrada DESC";
+    private final String SQL_SELECT_HISTORIAL = "SELECT "
+            + "id,fecha_entrada,fecha_salida,confirmado,observaciones,id_solicitud,id_area,id_estado "
+            + "FROM registros_unicos "
+            + "WHERE id_area = ? "
+            + "ORDER BY fecha_entrada DESC";
     
     private static final Conexion conex = Conexion.estado();
     
@@ -70,7 +75,6 @@ public class RegistroUnicoDAO implements Consultas<RegistroUnicoDTO> {
             ps.setInt(6, c.getId_area());
             ps.setInt(7, c.getId_estado());
             ResultSet res = ps.executeQuery();
-            System.out.println(ps);
             res.next();
             id = res.getInt(1);
             if(id > 0)
@@ -220,8 +224,23 @@ public class RegistroUnicoDAO implements Consultas<RegistroUnicoDTO> {
         return l;
     }
     
-    
-    
+    public List<RegistroUnicoDTO> selectHistorial(Object idAreas) {
+        PreparedStatement ps;
+        ResultSet res;
+        ArrayList l = new ArrayList();
+        try {
+            ps = conex.getCnn().prepareStatement(SQL_SELECT_HISTORIAL);
+            ps.setInt(1, (int) idAreas);
+            res = ps.executeQuery();
+            while(res.next()){
+                l.add(new RegistroUnicoDTO(res.getInt(1),new DateManager(res.getDate(2)),new DateManager(res.getDate(3)),res.getBoolean(4),res.getString(5),res.getInt(6),res.getInt(7),res.getInt(8)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return l;
+    }
+
     
 }
 

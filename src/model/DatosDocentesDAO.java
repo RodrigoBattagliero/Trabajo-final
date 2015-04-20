@@ -24,8 +24,8 @@ import resources.DateManager;
  */
 public class DatosDocentesDAO implements Consultas<DatosDocentesDTO> {
      private final String SQL_INSERT = "INSERT INTO "
-            + "docentes(nombre,apellido,dni,telefono,email,lugar_residencia,motivo_comision,fecha_inicio,fecha_finalizacion,id_departamento_academico,id_solicitud) "
-            + "VALUES(?,?,?,?,?,?,?,?,?,?,?) "
+            + "docentes(nombre,apellido,dni,telefono,email,lugar_residencia,motivo_comision,fecha_inicio,fecha_finalizacion,id_departamento_academico,id_solicitud,observaciones) "
+            + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?) "
             + "RETURNING id";
     private final String SQL_UPDATE = "UPDATE docentes "
             + "SET nombre = ?, apellido = ?, dni = ?, telefono = ?, email = ?, lugar_residencia = ?, motivo_comision = ?, fecha_inicio = ?, fecha_finalizacion = ?, id_departamento_academico = ?, id_solicitud = ? "
@@ -62,6 +62,7 @@ public class DatosDocentesDAO implements Consultas<DatosDocentesDTO> {
             ps.setTimestamp(9, new Timestamp(c.getFecha_hora_finalizacion().getFechaLong()));
             ps.setInt(10,c.getId_departamento_academico());
             ps.setInt(11,c.getId_solicitud());
+            ps.setString(12, c.getObservaciones());
             ResultSet res = ps.executeQuery();
             res.next();
             id = res.getInt(1);

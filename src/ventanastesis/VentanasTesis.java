@@ -1,8 +1,8 @@
 package ventanastesis;
 
-import controller.OgagtdController;
-import model.OgagtdDAO;
-import view.VentanaOgagtd;
+import controller.sedeinterior.SedeInteriorController;
+import model.SedeInteriorDAO;
+import view.VentanaSedeInterior;
 
 
 /**
@@ -29,9 +29,14 @@ public class VentanasTesis {
         }
         */
         
-        VentanaOgagtd ventana = new VentanaOgagtd();
-        OgagtdDAO ogagtdDAO = new OgagtdDAO();
-        OgagtdController ogagtdController = new OgagtdController(ventana, ogagtdDAO);
+//        VentanaOgagtd ventana = new VentanaOgagtd();
+//        OgagtdDAO ogagtdDAO = new OgagtdDAO();
+//        OgagtdController ogagtdController = new OgagtdController(ventana, ogagtdDAO);
+//        ogagtdController.init();
+        
+        VentanaSedeInterior ventana = new VentanaSedeInterior();
+        SedeInteriorDAO sedeInterior = new SedeInteriorDAO();
+        SedeInteriorController ogagtdController = new SedeInteriorController(ventana, sedeInterior);
         ogagtdController.init();
         
         /*

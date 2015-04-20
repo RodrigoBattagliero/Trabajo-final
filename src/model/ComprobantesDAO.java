@@ -28,9 +28,9 @@ public class ComprobantesDAO implements Consultas<ComprobantesDTO> {
             + "comprobantes SET importe = ?, id_solicitud = ?, numero_comprobante = ?, proveedor = ?, observaciones = ? "
             + "WHERE id = ?";
     private final String SQL_DELETE = "DELETE FROM comprobantes WHERE id = ?";
-    private final String SQL_SELECT = "SELECT id,importe,id_solicitud,numero_comprobante,proveedor,obervaciones FROM comprobantes WHERE id = ?";
-    private final String SQL_SELECTALL = "SELECT id,importe,id_solicitud,numero_comprobante,proveedor,obervaciones FROM comprobantes";
-    private final String SQL_SELECTRELATED = "SELECT id,importe,id_solicitud,numero_comprobante,proveedor,obervaciones FROM comprobantes WHERE id_solicitud = ?";
+    private final String SQL_SELECT = "SELECT id,importe,id_solicitud,numero_comprobante,proveedor,observaciones FROM comprobantes WHERE id = ?";
+    private final String SQL_SELECTALL = "SELECT id,importe,id_solicitud,numero_comprobante,proveedor,observaciones FROM comprobantes";
+    private final String SQL_SELECTRELATED = "SELECT id,importe,id_solicitud,numero_comprobante,proveedor,observaciones FROM comprobantes WHERE id_solicitud = ?";
     
     private static final Conexion conex = Conexion.estado();
 
