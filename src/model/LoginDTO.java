@@ -10,25 +10,45 @@ package model;
  * @author rodrigo
  */
 public class LoginDTO {
-    String user;
+    int id;
+    int idArea;
+    String nombre;
     String password;
-    int tipo;
+    String user;
 
     public LoginDTO() {
     }
 
-    public LoginDTO(String user, String password, int tipo) {
-        this.user = user;
+    public LoginDTO(int id, int idArea, String nombre, String password, String user) {
+        this.id = id;
+        this.idArea = idArea;
+        this.nombre = nombre;
         this.password = password;
-        this.tipo = tipo;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
         this.user = user;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdArea() {
+        return idArea;
+    }
+
+    public void setIdArea(int idArea) {
+        this.idArea = idArea;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getPassword() {
@@ -39,12 +59,15 @@ public class LoginDTO {
         this.password = password;
     }
 
-    public int getTipo() {
-        return tipo;
+    public String getUser() {
+        return user;
     }
 
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
+    public void setUser(String user) {
+        this.user = user;
     }
+    
+    
+  
     
 }

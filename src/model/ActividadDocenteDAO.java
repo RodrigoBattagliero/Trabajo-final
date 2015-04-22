@@ -23,7 +23,7 @@ import resources.DateManager;
  */
 public class ActividadDocenteDAO implements Consultas<ActividadDocenteDTO> {
     
-     private final String SQL_INSERT = "INSERT INTO "
+    private final String SQL_INSERT = "INSERT INTO "
             + "actividad_docentes(id_solicitud,asignatura,fecha,observaciones) "
             + "VALUES(?,?,?,?) "
             + "RETURNING id";
@@ -58,7 +58,7 @@ public class ActividadDocenteDAO implements Consultas<ActividadDocenteDTO> {
             ps.setString(2, c.getAsignatura());
             ps.setDate(3, new Date(c.getFecha().getFechaLong()));
             ps.setString(4, c.getObservaciones());
-            System.out.println(ps);
+            
             ResultSet a = ps.executeQuery();
             a.next();
             id = a.getInt(1);

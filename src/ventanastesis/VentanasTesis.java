@@ -1,8 +1,8 @@
 package ventanastesis;
 
-import controller.sedeinterior.SedeInteriorController;
-import model.SedeInteriorDAO;
-import view.VentanaSedeInterior;
+import resources.Login;
+import model.LoginDAO;
+import view.FrameLogin;
 
 
 /**
@@ -34,10 +34,25 @@ public class VentanasTesis {
 //        OgagtdController ogagtdController = new OgagtdController(ventana, ogagtdDAO);
 //        ogagtdController.init();
         
-        VentanaSedeInterior ventana = new VentanaSedeInterior();
-        SedeInteriorDAO sedeInterior = new SedeInteriorDAO();
-        SedeInteriorController ogagtdController = new SedeInteriorController(ventana, sedeInterior);
-        ogagtdController.init();
+//        VentanaSedeInterior ventana = new VentanaSedeInterior();
+//        SedeInteriorDAO sedeInterior = new SedeInteriorDAO();
+//        SedeInteriorController ogagtdController = new SedeInteriorController(ventana, sedeInterior);
+//        ogagtdController.init();
+        
+//        VentanaBedel ventana = new VentanaBedel();
+//        BedelDAO sedeInterior = new BedelDAO();
+//        BedelController ogagtdController = new BedelController(ventana, sedeInterior);
+//        ogagtdController.init();
+        
+//            VentanaRendicionDeCuentas ventana = new VentanaRendicionDeCuentas();
+//            RendicionDeCuentasDAO sedeInterior = new RendicionDeCuentasDAO();
+//            RendicionDeCuentasController ogagtdController = new RendicionDeCuentasController(ventana, sedeInterior);
+//            ogagtdController.init();
+            
+//            VentanaSecretariaAdministrativoFinanciera ventana = new VentanaSecretariaAdministrativoFinanciera();
+//            SecretariaAdministrativoFinancieraDAO sedeInterior = new SecretariaAdministrativoFinancieraDAO();
+//            SecretariaAdministrativaFinancieraController ogagtdController = new SecretariaAdministrativaFinancieraController(ventana, sedeInterior);
+//            ogagtdController.init();
         
         /*
         final long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; //Milisegundos al día  
@@ -46,12 +61,12 @@ public class VentanasTesis {
         System.out.println(d);
         */
         
-        /*
+        
         FrameLogin LoginView = new FrameLogin();
         LoginDAO Login = new LoginDAO();
-        LoginController LoginController = new LoginController(LoginView, Login);
+        Login LoginController = new Login(LoginView, Login);
         LoginController.init();
-        */
+        
         
     }
     

@@ -11,7 +11,7 @@ package model;
  */
 public class DatosAlojamientoComidaDTO {
     private int id;
-    private int tipo;
+    private int tipo; // 1: alojamiento o comida; 2: Combustible
     private String descripcion;
     private int id_comprobante;
 
@@ -20,7 +20,7 @@ public class DatosAlojamientoComidaDTO {
 
     public DatosAlojamientoComidaDTO(int id, int tipo, String descripcion, int id_comprobante) {
         this.id = id;
-        this.tipo = tipo;
+        this.tipo = tipo; 
         this.descripcion = descripcion;
         this.id_comprobante = id_comprobante;
     }
