@@ -33,14 +33,13 @@ public class DatosDocentesController {
     private String telefono;
     private String email;
     private String lugar_residencia;
-    private int id_sede;
     private String motivo_comision;
     private DateManager fecha_inicio;
     private DateManager fecha_finalizacion;
     private int id_depto_academico;
-    private int id_solicitud;
-    private String observaciones;
-    private int id;
+    private String observaciones; 
+   
+          
     
     // Deptos academicos
     private DepartamentosAcademicosDAO DeptosAcademivosDAO;
@@ -58,14 +57,11 @@ public class DatosDocentesController {
         telefono = null;
         email  = null;
         lugar_residencia = null;
-        id_sede = 0;
         motivo_comision = null;
         fecha_inicio = null;
         fecha_finalizacion = null;
         id_depto_academico = 0;
-        id_solicitud = 0;
         observaciones = null;
-        id = 0;
         
         DeptosAcademivosDAO = new DepartamentosAcademicosDAO();
     }
@@ -193,6 +189,29 @@ public class DatosDocentesController {
     public int guardarDatos(int idSolicitud){
         this.datosDocentesDTO.setId_solicitud(idSolicitud);
         return this.model.create(this.datosDocentesDTO);
+    }
+    
+    public void setEnable(){
+        this.view.removeAll();
+        this.view = null;
+        this.model = null;
+        this.solicitudController = null;
+        this.datosDocentesDTO = null;
+                
+        nombre = null;
+        apellido = null;
+        dni = null;
+        telefono = null;
+        email  = null;
+        lugar_residencia = null;
+        motivo_comision = null;
+        fecha_inicio = null;
+        fecha_finalizacion = null;
+        id_depto_academico = 0;
+        observaciones = null;
+        
+        DeptosAcademivosDAO = null;
+        
     }
     
 }

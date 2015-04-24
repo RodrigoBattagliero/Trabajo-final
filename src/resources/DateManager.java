@@ -36,15 +36,18 @@ public class DateManager {
 
     public DateManager(String fechaString) {
         this.fechaString = fechaString;
-        this.fechaDate = null; // this.StringToDate(fechaString, "dd-MM-YYYY HH:mm:ss");
+        this.fechaDate = this.StringToDate(fechaString, "dd-MM-yyyy HH:mm:ss");
+        /*
         try {
             formato = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss");
             this.fechaDate = formato.parse(fechaString);
         } catch (ParseException ex) {
             //Logger.getLogger(DateManager.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
             System.out.println("Ex");
-            this.fechaDate = null;
+            this.StringToDate(fechaString, "dd-MM-YYYY HH:mm:ss");
         }
+                */
         this.fechaLong = this.fechaDate.getTime();
     }
     

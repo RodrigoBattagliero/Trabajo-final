@@ -132,6 +132,25 @@ public class CrearRegistroUnicoController {
         }
     }
     
+    public void setEnable(){
+        this.view.removeAll();
+        this.view = null;
+        this.model = null;
+        this.solicitudController = null;
+        
+        this.registroDTO = null;
+        // Datos propios
+        this.fechaEntrada = null;
+        this.fechaSalida = null;
+        this.confirmado = false;
+        this.observaciones = null;
+        this.id_area = 0;
+        this.id_estado = 0;
+        this.id_solicitud = 0;
+        this.registros = null;
+        
+        
+    }
     
     
 }

@@ -83,23 +83,27 @@ public class DatosTrasladoController {
     public void init(){
         this.view.setVisible(true);
         this.view.btnAgregarDatosAlojamientoComida.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarDatosAlojamientoComidaActionPerformed(evt);
             }
         });
         this.view.btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarPerformed(evt);
             }
         });
         
         this.view.btnAgregarFila.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarFilaActionPerformed(evt);
             }
         });
         
         this.view.btnEliminarFila.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarFilaActionPerformed(evt);
             }
@@ -144,34 +148,29 @@ public class DatosTrasladoController {
         DefaultTableModel modelo = (DefaultTableModel) this.view.tblDatosTraslado.getModel();
         int filas = modelo.getRowCount();
         boolean b = true;
-        String a = "";
         for(int i=0; i < filas; i++){
             if(modelo.getValueAt(i , 0) != null){
                 this.numeroComprobante = String.valueOf(modelo.getValueAt(i , 0));
             }else{
                 b = false;
-                a += "1 ";
             }
             
             if(modelo.getValueAt(i , 1) != null){
                 this.proveedor = String.valueOf(modelo.getValueAt(i , 1));
             }else{
                 b = false;
-                a += " 2";
             }
             
             if(modelo.getValueAt(i, 2) != null){
                 this.importe = new Double(String.valueOf(modelo.getValueAt(i, 2)));
             }else{
                 b = false;
-                a += " 3";
             }
             
             if(modelo.getValueAt(i, 3) != null){
                 this.salidaDesde = String.valueOf(modelo.getValueAt(i, 3));
             }else{
                 b = false;
-                a += " 4";
             }
             
             if(modelo.getValueAt(i, 4) != null){
@@ -182,14 +181,12 @@ public class DatosTrasladoController {
                 }
             }else{
                 b = false;
-                a += " 5";
             }
             
             if(modelo.getValueAt(i, 5) != null){
                 this.regresoHasta = String.valueOf(modelo.getValueAt(i, 5));
             }else{
                 b = false;
-                a += " 6";
             }
             
             if(modelo.getValueAt(i, 6) != null){
@@ -200,7 +197,6 @@ public class DatosTrasladoController {
                 }
             }else{
                 b = false;
-                a += " 7";
             }
                 
             if(modelo.getValueAt(i, 7) != null){
@@ -209,7 +205,7 @@ public class DatosTrasladoController {
             
             if(b){
                 comprobantes.add(new ComprobantesDTO(0, importe, 0, numeroComprobante, proveedor, observaciones));
-                traslados.add(new DatosTrasladoDTO(0, salidaDesde, regresoHasta, regresiFechaHora, salidaFechaHora, 0));
+                traslados.add(new DatosTrasladoDTO(0, salidaDesde, regresoHasta,salidaFechaHora, regresiFechaHora, 0));
             }else{
                 if(this.observaciones.length() > 0){
                     int op = JOptionPane.showConfirmDialog(this.view, 
@@ -276,6 +272,41 @@ public class DatosTrasladoController {
             this.traslados.get(i).setId_comprobante(idComprobante);
             this.model.create(this.traslados.get(i));
         }
-        this.datosAlojamientoController.guardarDatos(idSolicitud);
+        try{
+            this.datosAlojamientoController.guardarDatos(idSolicitud);
+        }catch(NullPointerException e){
+            
+        }
+    }
+    
+    public void setEnable(){
+        
+        this.view.removeAll();
+        this.view.setVisible(false);
+        this.view = null;
+        this.model = null;
+        this.solicitudController = null;
+        
+        this.solicitudDAO = null;
+        this.solicitudDTO = null;
+        
+        this.datosAlojamientoController = null;
+        
+        this.numeroComprobante = null;
+        this.proveedor = null;
+        this.salidaDesde = null;
+        this.salidaFechaHora = null;
+        this.regresoHasta = null;
+        this.regresiFechaHora = null;
+        this.importe = null;
+        this.observaciones = null;
+        this.comprobantes = null;
+        this.traslados = null;
+        
+        this.comprobanteDAO = null;
+        this.comprobantesDTO = null;
+        
+        
+        
     }
 }

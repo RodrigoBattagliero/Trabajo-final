@@ -79,7 +79,7 @@ public class PanelCompletarDatosDeTraslado extends javax.swing.JPanel {
                     }
                 }
         );
-                
+               
     }
 
     /**
@@ -119,6 +119,10 @@ public class PanelCompletarDatosDeTraslado extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblDatosTraslado);
+        if (tblDatosTraslado.getColumnModel().getColumnCount() > 0) {
+            tblDatosTraslado.getColumnModel().getColumn(5).setCellEditor(null);
+            tblDatosTraslado.getColumnModel().getColumn(6).setCellEditor(null);
+        }
 
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -193,20 +197,18 @@ public class PanelCompletarDatosDeTraslado extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlDatosAlojamientoComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAceptar)
+                        .addComponent(btnCancelar)
+                        .addComponent(btnAgregarDatosAlojamientoComida))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAceptar)
-                            .addComponent(btnCancelar)
-                            .addComponent(btnAgregarDatosAlojamientoComida))
-                        .addContainerGap(52, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAgregarFila)
                             .addComponent(btnEliminarFila))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(47, 47, 47)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -3,10 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/model/ActividadDocenteDAO.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/model/LoginDTO.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/interfaces/Consultas.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/controller/sedeinterior/historialSolicitudesController.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/view/PanelActividadDocente.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/controller/ogagtd/historialSolicitudesController.java</file>
             <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/model/LoginDAO.java</file>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/resources/Login.java</file>
-            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/ventanastesis/VentanasTesis.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/view/PanelCompletarDatosDeTraslado.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/view/PanelAdministrarRegistroUnico.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/resources/DateManager.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/view/PanelCompletarDatosDeAlojamientoOComida.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/view/FrameLogin.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/controller/ogagtd/DatosTrasladoController.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/conexion/Conexion.java</file>
+            <file>file:/C:/Users/rodrigo/Documents/NetBeansProjects/VentanasTesis/src/model/SolicitudDTO.java</file>
         </group>
     </open-files>
 </project-private>

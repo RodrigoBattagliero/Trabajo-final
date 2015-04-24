@@ -35,6 +35,7 @@ public class VentanaOgagtd extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         mItemIniciarNuevaSolicitud = new javax.swing.JMenuItem();
         mItemSolicitudesACompletar = new javax.swing.JMenuItem();
+        mItemSedeInterior = new javax.swing.JMenuItem();
         mAdministracion = new javax.swing.JMenu();
         mItemConfirmarLoteDeSolicitudesProcesadas = new javax.swing.JMenuItem();
         mItemListarHistorialDeSolicitudesProcesadas = new javax.swing.JMenuItem();
@@ -54,6 +55,9 @@ public class VentanaOgagtd extends javax.swing.JFrame {
 
         mItemSolicitudesACompletar.setText("Solicitudes a completar");
         jMenu2.add(mItemSolicitudesACompletar);
+
+        mItemSedeInterior.setText("Solicitudes iniciadas en sede interior");
+        jMenu2.add(mItemSedeInterior);
 
         jMenuBar1.add(jMenu2);
 
@@ -172,6 +176,7 @@ public class VentanaOgagtd extends javax.swing.JFrame {
     public javax.swing.JMenuItem mItemIniciarNuevaSolicitud;
     public javax.swing.JMenuItem mItemListarHistorialDeSolicitudesProcesadas;
     public javax.swing.JMenuItem mItemListarHistorialExpedientes;
+    public javax.swing.JMenuItem mItemSedeInterior;
     public javax.swing.JMenuItem mItemSolicitudesACompletar;
     public javax.swing.JMenuItem menuItemSalir;
     // End of variables declaration//GEN-END:variables

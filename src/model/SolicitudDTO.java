@@ -5,7 +5,8 @@
  */
 package model;
 
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import resources.DateManager;
 
 /**
@@ -18,16 +19,26 @@ public class SolicitudDTO {
     private int tipo;
     private DateManager fecha_alta;
     private String observaciones;
+    private int id_sede;
+
+    public int getId_sede() {
+        return id_sede;
+    }
+
+    public void setId_sede(int id_sede) {
+        this.id_sede = id_sede;
+    }
 
     public SolicitudDTO() {
     }
 
-    public SolicitudDTO(int id, int numero_solicutd, int tipo, DateManager fecha_alta,String observaciones) {
+    public SolicitudDTO(int id, int numero_solicutd, int tipo, DateManager fecha_alta,String observaciones,int id_sede) {
         this.id = id;
         this.numero_solicutd = numero_solicutd;
         this.tipo = tipo;
         this.fecha_alta = fecha_alta;
         this.observaciones = observaciones;
+        this.id_sede = id_sede;
     }
 
     public int getId() {
@@ -74,6 +85,12 @@ public class SolicitudDTO {
      */
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
+    }
+    
+    public String getNumeroSolicitudCompleto(){
+        Calendar fecha = new GregorianCalendar();
+        fecha.setTime(getFecha_alta().getFechaDate());
+        return String.format("%s-%s",getNumero_solicutd(),fecha.get(Calendar.YEAR));
     }
     
     

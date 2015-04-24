@@ -106,7 +106,7 @@ public class CompletarDatosOgagtdController {
         solicitudesACompletar = new ArrayList();
         solicitudesDocentes = new ArrayList();
         ArrayList<DatosDocentesDTO> docentesAux = null;
-        registros = (ArrayList<RegistroUnicoDTO>) registroUnico.selectRegistroUnico(getIdArea(), getIdEstadoEnVerificacion());
+        registros = (ArrayList<RegistroUnicoDTO>) registroUnico.selectRegistroUnicoTipo(getIdArea(), getIdEstadoEnVerificacion(),getTipo());
         
         int cant = registros.size();
         for (int i = 0; i < cant; i++) {
@@ -130,7 +130,9 @@ public class CompletarDatosOgagtdController {
     private int getIdEstadoEnVerificacion(){
         return 1;
     }
-    
+    private int getTipo(){
+        return 1;
+    }
     private void tblSolicitudesMouseClicked(MouseEvent evt) {
         designacionDocenteController = new DesignacionDocenteController(
                 new PanelDesignacionDocente(), 

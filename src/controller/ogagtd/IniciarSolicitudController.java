@@ -5,7 +5,9 @@
  */
 package controller.ogagtd;
 
+import java.awt.event.ItemEvent;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -16,6 +18,8 @@ import model.DatosTrasladoDAO;
 import model.DatosTrasladoDTO;
 import model.RegistroUnicoDAO;
 import model.RegistroUnicoDTO;
+import model.SedesDAO;
+import model.SedesDTO;
 import model.SolicitudDAO;
 import model.SolicitudDTO;
 import resources.DateManager;
@@ -36,21 +40,12 @@ public class IniciarSolicitudController {
     private SolicitudDTO solicitudDTO;
     
     // Datos docentes
-    private PanelCompletarDatosDeDocentes datosDocenteView;
-    private DatosDocentesDAO datosDocentesDAO;
-    private DatosDocentesDTO datosDocentesDTO;
     private DatosDocentesController datosDocentesController;
     
     // Comprobante de traslado
-    private PanelCompletarDatosDeTraslado datosTrasladoView;
-    private DatosTrasladoDAO datosTrasladoDAO;
-    private DatosTrasladoDTO datosTrasladoDTO;
     private DatosTrasladoController datosTrasladoController;
     
     // Registro Unico
-    private PanelCrearRegistroUnico crearRegistroUnicoView;
-    private RegistroUnicoDAO crearRegistroUnicoModel;
-    private RegistroUnicoDTO crearRegistroUnicoDTO;
     private CrearRegistroUnicoController crearRegitroUnicoController;
     
     // Variables propias
@@ -58,6 +53,7 @@ public class IniciarSolicitudController {
     private DateManager fechaPresentacion;
     private String observaciones;
     private DateFormat dateFormat;
+    private int idSede;
     private final int DIAS_DE_PRESENTACION = 14;
 
     public IniciarSolicitudController(PanelIniciarSolicitud v, SolicitudDAO m) {
@@ -67,6 +63,7 @@ public class IniciarSolicitudController {
         this.numeroSolicitud = 0;
         this.fechaPresentacion = null;
         this.observaciones = null;
+        this.idSede = 0;
         this.dateFormat = DateFormat.getDateInstance();
         
         // Datos docentes
@@ -84,10 +81,16 @@ public class IniciarSolicitudController {
     public void init(){
         this.view.setVisible(true);
         this.view.txtFechaDePresentacion.setDate(new Date());
+        this.setSedes();
         this.view.txtNumeroDeSolicitud.setText(String.valueOf(this.calularNumeroSolicitud()));
         this.view.btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
+            }
+        });
+        this.view.cbxSedes.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxSedesItemStateChanged(evt);
             }
         });
     }
@@ -101,12 +104,26 @@ public class IniciarSolicitudController {
         } 
     }
     
+    private void cbxSedesItemStateChanged(ItemEvent evt) {
+        this.view.txtNumeroDeSolicitud.setText(String.valueOf(this.calularNumeroSolicitud()));
+    }
+    
+    private void setSedes(){
+        ArrayList<SedesDTO> sedes = (ArrayList<SedesDTO>) new SedesDAO().selectAll();
+        int cant = sedes.size();
+        for (int i = 0; i < cant; i++) {
+            this.view.cbxSedes.addItem(sedes.get(i).getNombre());
+        }
+    }
+    
     private int calularNumeroSolicitud(){
-        solicitudDTO = model.selectLast();
-        int numeroSolicitud = 0;
+        idSede = this.view.cbxSedes.getSelectedIndex();
+        idSede++;
+        solicitudDTO = model.selectLast(idSede);
+        int nSolicitud = 0;
         if(solicitudDTO != null)
-            numeroSolicitud = solicitudDTO.getNumero_solicutd();
-        return ++numeroSolicitud;
+            nSolicitud = solicitudDTO.getNumero_solicutd();
+        return ++nSolicitud;
     }
     
     private boolean vefiricarDiasPresentacion(){
@@ -135,26 +152,31 @@ public class IniciarSolicitudController {
         // Diferencia
         long diferencia = ( fechaA.getTime() - fechaP.getTime() )/MILLSECS_PER_DAY; 
         System.out.println("Dif "+diferencia);
-        if(diferencia >= 0 && diferencia <= this.DIAS_DE_PRESENTACION){
-            return true;
-        }else{
-            return false;
-        }
+        return diferencia >= 0 && diferencia <= this.DIAS_DE_PRESENTACION;
     }
     
     private boolean verificarDatosEntrada(){
-        this.numeroSolicitud = Integer.parseInt(this.view.txtNumeroDeSolicitud.getText());
+        boolean bData = true;
+        String numeroSolicitudStr = this.view.txtNumeroDeSolicitud.getText();
+        try{
+           this.numeroSolicitud = Integer.parseInt(numeroSolicitudStr); 
+        }catch(Exception e){
+            bData = false;
+        }
+        
+        this.idSede = this.view.cbxSedes.getSelectedIndex();
+        this.idSede++;
         try{
             this.fechaPresentacion = new DateManager(this.view.txtFechaDePresentacion.getDate());
         }catch(NullPointerException e){
+            bData = false;
             this.fechaPresentacion = new DateManager("00-00-0000 00:00:00");
         }
         
         observaciones = this.view.txtObservaciones.getText();
         
         boolean b = vefiricarDiasPresentacion();
-        System.out.println(b);
-        if(numeroSolicitud > 0 && b){
+        if(bData && b){
             return true;
         }else{
             if(this.observaciones.length() > 0){
@@ -176,11 +198,11 @@ public class IniciarSolicitudController {
     }
     
     private void datosTempotales(){
-        this.solicitudDTO = new SolicitudDTO(0, numeroSolicitud, 1, fechaPresentacion, observaciones);
+        this.solicitudDTO = new SolicitudDTO(0, numeroSolicitud, 1, fechaPresentacion, observaciones,idSede);
     }
     
     private void guardarDatos(){
-        int idSolicitud = this.model.create(new SolicitudDTO(0,this.numeroSolicitud, 1, fechaPresentacion,observaciones));
+        int idSolicitud = this.model.create(solicitudDTO);
         this.datosDocentesController.guardarDatos(idSolicitud);
         this.datosTrasladoController.guardarDatos(idSolicitud);
         this.crearRegitroUnicoController.guardarDatos(idSolicitud);
@@ -190,12 +212,29 @@ public class IniciarSolicitudController {
         this.view.txtFechaDePresentacion.setEnabled(false);
         this.view.txtNumeroDeSolicitud.setEnabled(false);
         this.view.txtObservaciones.setEditable(false);
+        this.view.cbxSedes.setEnabled(false);
         this.view.btnGuardar.setEnabled(false);
         this.view.btnCancelar.setEnabled(false);
     }
     
-    private void generarProximaEntradaRegistroUnico(){
-        
+    private void enableFields(){
+        this.view.txtFechaDePresentacion.setEnabled(true);
+        this.view.txtNumeroDeSolicitud.setEnabled(true);
+        this.view.txtObservaciones.setEditable(true);
+        this.view.cbxSedes.setEnabled(true);
+        this.view.btnGuardar.setEnabled(true);
+        this.view.btnCancelar.setEnabled(true);
+    }
+    
+    
+
+    private void reset(){
+        this.datosDocentesController.setEnable();
+        this.datosTrasladoController.setEnable();
+        this.crearRegitroUnicoController.setEnable();
+        this.enableFields();
+        this.init();
+        this.view.updateUI();
     }
     
     // Datos docentes
@@ -231,16 +270,17 @@ public class IniciarSolicitudController {
     
     // Confirmar registro de solicitud
     public void confirmar(){
-        int op = JOptionPane.showConfirmDialog(view,
+        int op = JOptionPane.showConfirmDialog(null,
                 "¿Esta seguro que desea guardar la solicitud?",
                 "Confirmar",
                 2);
         if(op == 0){
             this.guardarDatos();
-            this.generarProximaEntradaRegistroUnico();
-            JOptionPane.showMessageDialog(this.view, "Solicitud iniada con éxito.");
+            JOptionPane.showMessageDialog(null, "Solicitud iniada con éxito.");
+            reset();
         }
-    }    
+    }
+    
     
     public DateManager getFechaPresentacion(){
         return this.solicitudDTO.getFecha_alta();

@@ -57,6 +57,12 @@ public class RegistroUnicoDAO implements Consultas<RegistroUnicoDTO> {
             + "FROM registros_unicos "
             + "WHERE id_area = ? "
             + "ORDER BY fecha_entrada DESC";
+    private final String SQL_SELECT_REGISTRO_UNICO_TIPO = "SELECT "
+            + "id,fecha_entrada,fecha_salida,confirmado,observaciones,id_solicitud,id_area,id_estado "
+            + "FROM registros_unicos "
+            + "WHERE id_area = ? AND id_estado = ? "
+                    + "AND (SELECT tipo FROM solicitudes WHERE id = registros_unicos.id_solicitud) = ? "
+            + "ORDER BY fecha_entrada DESC";
     
     private static final Conexion conex = Conexion.estado();
     
@@ -231,6 +237,25 @@ public class RegistroUnicoDAO implements Consultas<RegistroUnicoDTO> {
         try {
             ps = conex.getCnn().prepareStatement(SQL_SELECT_HISTORIAL);
             ps.setInt(1, (int) idAreas);
+            res = ps.executeQuery();
+            while(res.next()){
+                l.add(new RegistroUnicoDTO(res.getInt(1),new DateManager(res.getDate(2)),new DateManager(res.getDate(3)),res.getBoolean(4),res.getString(5),res.getInt(6),res.getInt(7),res.getInt(8)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return l;
+    }
+    
+    public List<RegistroUnicoDTO> selectRegistroUnicoTipo(Object idArea,Object idEstado, Object tipo) {
+        PreparedStatement ps;
+        ResultSet res;
+        ArrayList l = new ArrayList();
+        try {
+            ps = conex.getCnn().prepareStatement(SQL_SELECT_REGISTRO_UNICO);
+            ps.setInt(1, (int) idArea);
+            ps.setInt(2, (int) idEstado);
+            ps.setInt(2, (int) tipo);
             res = ps.executeQuery();
             while(res.next()){
                 l.add(new RegistroUnicoDTO(res.getInt(1),new DateManager(res.getDate(2)),new DateManager(res.getDate(3)),res.getBoolean(4),res.getString(5),res.getInt(6),res.getInt(7),res.getInt(8)));

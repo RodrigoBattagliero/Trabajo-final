@@ -18,6 +18,7 @@ import model.DatosTrasladoDAO;
 import model.DatosTrasladoDTO;
 import model.DesignacionDocenteDAO;
 import model.DesignacionDocenteDTO;
+import model.EstadosDAO;
 import model.HistorialSolicitudesDAO;
 import model.RegistroUnicoDAO;
 import model.RegistroUnicoDTO;
@@ -74,7 +75,7 @@ public class historialSolicitudesController {
               String.valueOf(solicitudes.get(i).getFecha_alta().getFechaString()),
               String.valueOf(registros.get(i).getFecha_entrada().getFechaString()),
               String.valueOf(registros.get(i).getFecha_salida().getFechaString()),
-              String.valueOf(registros.get(i).getId_estado()),
+              String.valueOf(getEstado(registros.get(i).getId_estado())),
               String.valueOf(solicitudes.get(i).getId())
             };
             modelo.addRow(row);
@@ -94,7 +95,7 @@ public class historialSolicitudesController {
                         new SolicitudDAO().selectOne(registros.get(i).getId_solicitud())
                 );
             }catch(IndexOutOfBoundsException | NullPointerException e){
-                solicitudes.add(new SolicitudDTO(0, 0, 0, null, ""));
+                solicitudes.add(new SolicitudDTO(0, 0, 0, null, "",0));
             }
             try{
                 docenteAux = (ArrayList) new DatosDocentesDAO().selectRelated(registros.get(i).getId_solicitud());   
@@ -108,7 +109,9 @@ public class historialSolicitudesController {
     private int getIdArea(){
         return 1;
     }
-    
+    private String getEstado(int idEstado){
+        return new EstadosDAO().selectOne(idEstado).getNombre();
+    }
     private void tblSolicitudesMouseClicked(MouseEvent evt) {
         
         int selectedRow = this.view.tblSolicitudes.getSelectedRow();

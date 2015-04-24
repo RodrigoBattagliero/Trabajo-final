@@ -8,13 +8,14 @@ package controller.ogagtd;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import model.AreasDAO;
 import model.DatosDocentesDAO;
 import model.DatosDocentesDTO;
+import model.EstadosDAO;
 import model.RegistroUnicoDAO;
 import model.RegistroUnicoDTO;
 import model.SolicitudDAO;
 import model.SolicitudDTO;
-import resources.DateManager;
 import view.PanelConsultarRegistroUnico;
 
 /**
@@ -92,11 +93,18 @@ public class ConsultarRegistroUnicoController {
               String.valueOf(solicitudes.get(0).getFecha_alta().getFechaString()),
               String.valueOf(registros.get(i).getFecha_entrada().getFechaString()),
               String.valueOf(registros.get(i).getFecha_salida().getFechaString()),
-              String.valueOf(registros.get(i).getId_area()),
-              String.valueOf(registros.get(i).getId_estado())              
+              String.valueOf(getEstado(registros.get(i).getId_estado())),
+              String.valueOf(getArea(registros.get(i).getId_area()))
             };
             modelo.addRow(row);
         }
     }
+    private String getEstado(int idEstado){
+        return new EstadosDAO().selectOne(idEstado).getNombre();
+    }
+    private String getArea(int idArea){
+        return new AreasDAO().selectOne(idArea).getNombre();
+    }
+    
     
 }

@@ -26,28 +26,30 @@ import resources.DateManager;
 public class SolicitudDAO implements Consultas<SolicitudDTO> {
     
     private final String SQL_INSERT = "INSERT INTO "
-            + "solicitudes(numero_solicitud,tipo,fecha_alta,observaciones) "
-            + "VALUES(?,?,?,?) "
+            + "solicitudes(numero_solicitud,tipo,fecha_alta,observaciones,id_sede) "
+            + "VALUES(?,?,?,?,?) "
             + "RETURNING id";
     private final String SQL_UPDATE = "UPDATE "
-            + "solicitudes SET numero_solicitud = ?, tipo = ?, fecha_alta = ?, observaciones = ? "
+            + "solicitudes SET numero_solicitud = ?, tipo = ?, fecha_alta = ?, observaciones = ?, id_sede = ? "
             + "WHERE id = ?";
     private final String SQL_DELETE = "DELETE FROM solicitudes WHERE id = ? ";
     private final String SQL_SELECT = "SELECT "
-            + "id,numero_solicitud,tipo,fecha_alta,observaciones "
+            + "id,numero_solicitud,tipo,fecha_alta,observaciones,id_sede "
             + "FROM solicitudes "
             + "WHERE id = ?";
     private final String SQL_SELECTALL = "SELECT "
-            + "id,numero_solicitud,tipo,fecha_alta,observaciones "
-            + "FROM solicitudes";
-    private final String SQL_SELECTLAST = "SELECT "
-            + "id,numero_solicitud,tipo,fecha_alta,observaciones "
+            + "id,numero_solicitud,tipo,fecha_alta,observaciones,id_sede "
             + "FROM solicitudes "
+            + "ORDER BY id ASC";
+    private final String SQL_SELECTLAST = "SELECT "
+            + "id,numero_solicitud,tipo,fecha_alta,observaciones,id_sede "
+            + "FROM solicitudes "
+            + "WHERE id_sede = ? "
             + "ORDER BY numero_solicitud DESC "
             + "LIMIT 1 "
             + "OFFSET 0";
     private final String SQL_SELECTRELATED = "SELECT "
-            + "id,numero_solicitud,tipo,fecha_alta,observaciones "
+            + "id,numero_solicitud,tipo,fecha_alta,observaciones,id_sede "
             + "FROM solicitudes "
             + "WHERE numero_solicitud = ?";
     //private final String SQL_LASTID = "SELECT lastval() FROM solicitudes";
@@ -65,6 +67,7 @@ public class SolicitudDAO implements Consultas<SolicitudDTO> {
             ps.setDate(3, new Date(c.getFecha_alta().getFechaLong()));
             //ps.setString(3,(String)c.getFecha_alta().getFechaString());
             ps.setString(4, c.getObservaciones());
+            ps.setInt(5, c.getId_sede());
             ResultSet a = ps.executeQuery();
             a.next();
             id = a.getInt(1);
@@ -105,7 +108,8 @@ public class SolicitudDAO implements Consultas<SolicitudDTO> {
             ps.setInt(2, c.getTipo());
             ps.setDate(3, (Date) c.getFecha_alta().getFechaDate());
             ps.setString(4, c.getObservaciones());
-            ps.setInt(5, c.getId());
+            ps.setInt(5, c.getId_sede());
+            ps.setInt(6, c.getId());
             if(ps.executeUpdate() > 0)
                 return true;
         } catch (SQLException ex) {
@@ -127,7 +131,14 @@ public class SolicitudDAO implements Consultas<SolicitudDTO> {
            res = ps.executeQuery();
            while(res.next()){
                
-               a = new SolicitudDTO(res.getInt(1),res.getInt(2),res.getInt(3),new DateManager(res.getDate(4)),res.getString(5));
+               a = new SolicitudDTO(
+                       res.getInt(1),
+                       res.getInt(2),
+                       res.getInt(3),
+                       new DateManager(res.getDate(4)),
+                       res.getString(5),
+                       res.getInt(6)
+               );
            }
            return a;
         } catch (SQLException ex) {
@@ -147,7 +158,14 @@ public class SolicitudDAO implements Consultas<SolicitudDTO> {
             ps = conex.getCnn().prepareStatement(SQL_SELECTALL);
             res = ps.executeQuery();
             while(res.next()){
-                solicitudes.add(new SolicitudDTO(res.getInt(1),res.getInt(2),res.getInt(3),new DateManager(res.getDate(4)),res.getString(5)));
+                solicitudes.add(new SolicitudDTO(
+                        res.getInt(1),
+                        res.getInt(2),
+                        res.getInt(3),
+                        new DateManager(res.getDate(4)),
+                        res.getString(5),
+                        res.getInt(6)
+                ));
             }
             return solicitudes;
         } catch (SQLException ex) {
@@ -168,7 +186,14 @@ public class SolicitudDAO implements Consultas<SolicitudDTO> {
             ps.setInt(1, (int) key);
             res = ps.executeQuery();
             while(res.next()){
-                l.add(new SolicitudDTO(res.getInt(1),res.getInt(2),res.getInt(3),new DateManager(res.getDate(4)),res.getString(5)));
+                l.add(new SolicitudDTO(
+                        res.getInt(1),
+                        res.getInt(2),
+                        res.getInt(3),
+                        new DateManager(res.getDate(4)),
+                        res.getString(5),
+                        res.getInt(6)
+                ));
             }
         } catch (SQLException ex) {
             Logger.getLogger(SolicitudDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -176,16 +201,24 @@ public class SolicitudDAO implements Consultas<SolicitudDTO> {
         return l;
     }
     
-    public SolicitudDTO selectLast(){
+    public SolicitudDTO selectLast(int idSede){
         PreparedStatement ps;
         ResultSet res;
         SolicitudDTO a = null;
         try {
-            ps = conex.getCnn().prepareStatement(SQL_SELECTLAST);
+           ps = conex.getCnn().prepareStatement(SQL_SELECTLAST);
+           ps.setInt(1, idSede);
            res = ps.executeQuery();
            while(res.next()){
                
-               a = new SolicitudDTO(res.getInt(1),res.getInt(2),res.getInt(3),new DateManager(res.getDate(4)),res.getString(5));
+               a = new SolicitudDTO(
+                       res.getInt(1),
+                       res.getInt(2),
+                       res.getInt(3),
+                       new DateManager(res.getDate(4)),
+                       res.getString(5),
+                       res.getInt(6)
+               );
            }
            return a;
         } catch (SQLException ex) {

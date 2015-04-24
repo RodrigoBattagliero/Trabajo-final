@@ -80,7 +80,7 @@ public class DatosAlojamientoComidaController {
        this.datos = new ArrayList();
        this.comprobanteDTO = new ArrayList();
        DefaultTableModel modelo = (DefaultTableModel) this.view.tblDatosAlojamientoComida.getModel();
-       int cantidad = modelo.getColumnCount();
+       int cantidad = modelo.getRowCount();
        for (int i = 0; i < cantidad; i++) {
            boolean b = true;
            
@@ -154,5 +154,25 @@ public class DatosAlojamientoComidaController {
           this.datos.get(i).setId_comprobante(idComprobante);
           this.model.create(this.datos.get(i));
        }
+   }
+   
+   public void setEnable(){
+        this.view.removeAll();
+        this.view.setVisible(false);
+        this.view = null;
+        this.model = null;
+        this.trasladoController = null;
+        
+        this.numero_comprobante = null;
+        this.proveedor = null;
+        this.descripcion = null;
+        this.importe = null;
+        this.observaciones = null;
+        
+        this.datos = null;
+        this.comprobanteDTO = null;
+        this.comprobateDAO = null;
+        
+       
    }
 }

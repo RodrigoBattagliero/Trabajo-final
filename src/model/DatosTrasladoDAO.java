@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -53,11 +54,13 @@ public class DatosTrasladoDAO implements Consultas<DatosTrasladoDTO>  {
             // desde,hasta,fecha_hora_salida,fecha_hora_regreso,id_comprobante
             ps.setString(1,c.getDesde());
             ps.setString(2,c.getHasta());
-            ps.setDate(3, new Date(c.getFecha_hora_salida().getFechaLong()));
-            ps.setDate(4, new Date(c.getFecha_hora_regreso().getFechaLong()));
+            ps.setTimestamp(3, new Timestamp(c.getFecha_hora_salida().getFechaLong()));
+            ps.setTimestamp(4, new Timestamp(c.getFecha_hora_regreso().getFechaLong()));
             //ps.setString(3,(String)c.getFecha_hora_salida().getFechaString());
             //ps.setString(4, (String)c.getFecha_hora_regreso().getFechaString());
             ps.setInt(5, c.getId_comprobante());
+            System.out.println(ps);
+            String a = "";
             ResultSet res = ps.executeQuery();
             res.next();
             id = res.getInt(1);
